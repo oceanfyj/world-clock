@@ -2,8 +2,12 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>World Clock Pro 3.2 | Persistence & Graphics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <title>World Clock Pro 3.4 | Mobile Optimized</title>
     <style>
         :root {
             /* Defaults */
@@ -15,175 +19,94 @@
             --hand: #333333; 
             --num-color: #57606f;
             
-            /* New Graphic Vars */
-            --face-bg: #f8f9fa; /* Default flat face */
+            /* Graphics */
+            --face-bg: #f8f9fa;
             --face-border: 3px solid #0052cc;
             --face-shadow: inset 0 2px 5px rgba(0,0,0,0.05);
             --center-dot: #333;
         }
 
-        /* --- THEME DEFINITIONS (Graphical Upgrades) --- */
-        
-        /* 1. Dark (Matte Finish) */
-        body.t-dark { 
-            --bg: #121212; --card: #1e1e1e; --text: #ffffff; --accent: #4dabf7; --border: #333; --hand: #fff; --num-color: #a4b0be; 
-            --face-bg: radial-gradient(circle at center, #2d3436 0%, #000000 100%);
-            --face-border: 3px solid #4dabf7;
-            --face-shadow: inset 0 0 10px rgba(0,0,0,0.8);
-            --center-dot: #fff;
-        }
-        
-        /* 2. Neon (Cyber Glow) */
-        body.t-neon { 
-            --bg: #050505; --card: #111; --text: #39ff14; --accent: #39ff14; --border: #1a1a1a; --hand: #39ff14; --num-color: #39ff14; 
-            --face-bg: radial-gradient(circle, #000 60%, #112211 100%);
-            --face-border: 3px solid #39ff14;
-            --face-shadow: 0 0 15px #39ff14, inset 0 0 20px rgba(57, 255, 20, 0.2);
-            --center-dot: #39ff14;
-        }
-
-        /* 3. Luxury (Gold Brushed Metal) */
-        body.t-luxury { 
-            --bg: #1c1c1c; --card: #2a2a2a; --text: #d4af37; --accent: #d4af37; --border: #444; --hand: #f5f5f5; --num-color: #d4af37; 
-            --face-bg: linear-gradient(135deg, #444 0%, #222 50%, #444 100%);
-            --face-border: 4px solid #d4af37;
-            --face-shadow: inset 0 0 10px #000;
-            --center-dot: #d4af37;
-        }
-
-        /* 4. Retro (Old Paper/Vintage) */
-        body.t-retro { 
-            --bg: #fdf6e3; --card: #eee8d5; --text: #586e75; --accent: #b58900; --border: #d2b48c; --hand: #2c3e50; --num-color: #586e75; 
-            --face-bg: radial-gradient(#fffdf5, #f0e6ce);
-            --face-border: 3px double #b58900;
-            --face-shadow: inset 0 0 15px rgba(181, 137, 0, 0.1);
-            --center-dot: #b58900;
-        }
-
-        /* 5. Ocean (Water Gradient) */
-        body.t-ocean { 
-            --bg: #e3f2fd; --card: #fff; --text: #01579b; --accent: #0288d1; --border: #81d4fa; --hand: #01579b; --num-color: #0277bd; 
-            --face-bg: radial-gradient(circle at 50% 30%, #b3e5fc, #4fc3f7);
-            --face-border: 3px solid #0288d1;
-            --face-shadow: inset 0 0 5px rgba(2, 136, 209, 0.3);
-            --center-dot: #01579b;
-        }
-
-        /* 6. Cyber (Tech Grid) */
-        body.t-cyber { 
-            --bg: #1a0b2e; --card: #2d1452; --text: #f0f; --accent: #0ff; --border: #502c7a; --hand: #0ff; --num-color: #0ff; 
-            --face-bg: 
-                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-                linear-gradient(#2d1452, #000);
-            --face-bg-size: 20px 20px, 20px 20px, 100% 100%; /* Only works if applied directly, doing simplified version in var */
-            --face-border: 3px solid #f0f;
-            --face-shadow: 0 0 10px #f0f;
-            --center-dot: #0ff;
-        }
-        /* Special override for cyber background size logic */
+        /* --- THEME DEFINITIONS --- */
+        body.t-dark { --bg: #121212; --card: #1e1e1e; --text: #ffffff; --accent: #4dabf7; --border: #333; --hand: #fff; --num-color: #a4b0be; --face-bg: radial-gradient(circle at center, #2d3436 0%, #000000 100%); --face-border: 3px solid #4dabf7; --face-shadow: inset 0 0 10px rgba(0,0,0,0.8); --center-dot: #fff; }
+        body.t-neon { --bg: #000; --card: #111; --text: #39ff14; --accent: #39ff14; --border: #1a1a1a; --hand: #39ff14; --num-color: #39ff14; --face-bg: radial-gradient(circle, #000 60%, #112211 100%); --face-border: 3px solid #39ff14; --face-shadow: 0 0 15px #39ff14, inset 0 0 20px rgba(57, 255, 20, 0.2); --center-dot: #39ff14; }
+        body.t-luxury { --bg: #1c1c1c; --card: #2a2a2a; --text: #d4af37; --accent: #d4af37; --border: #444; --hand: #f5f5f5; --num-color: #d4af37; --face-bg: linear-gradient(135deg, #444 0%, #222 50%, #444 100%); --face-border: 4px solid #d4af37; --face-shadow: inset 0 0 10px #000; --center-dot: #d4af37; }
+        body.t-retro { --bg: #fdf6e3; --card: #eee8d5; --text: #586e75; --accent: #b58900; --border: #d2b48c; --hand: #2c3e50; --num-color: #586e75; --face-bg: radial-gradient(#fffdf5, #f0e6ce); --face-border: 3px double #b58900; --face-shadow: inset 0 0 15px rgba(181, 137, 0, 0.1); --center-dot: #b58900; }
+        body.t-ocean { --bg: #e3f2fd; --card: #fff; --text: #01579b; --accent: #0288d1; --border: #81d4fa; --hand: #01579b; --num-color: #0277bd; --face-bg: radial-gradient(circle at 50% 30%, #b3e5fc, #4fc3f7); --face-border: 3px solid #0288d1; --face-shadow: inset 0 0 5px rgba(2, 136, 209, 0.3); --center-dot: #01579b; }
+        body.t-cyber { --bg: #1a0b2e; --card: #2d1452; --text: #f0f; --accent: #0ff; --border: #502c7a; --hand: #0ff; --num-color: #0ff; --face-bg: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(#2d1452, #000); --face-bg-size: 20px 20px, 20px 20px, 100% 100%; --face-border: 3px solid #f0f; --face-shadow: 0 0 10px #f0f; --center-dot: #0ff; }
         body.t-cyber .clock { background-size: 20px 20px, 20px 20px, 100% 100%; }
-
-        /* 7. Minimal (Clean Bauhaus) */
-        body.t-minimal { 
-            --bg: #fff; --card: #fff; --text: #000; --accent: #000; --border: #000; --hand: #000; --num-color: #000; 
-            --face-bg: #fff;
-            --face-border: 4px solid #000;
-            --face-shadow: none;
-            --center-dot: #000;
-        }
-
-        /* 8. Forest (Natural Texture) */
-        body.t-forest { 
-            --bg: #f1f8e9; --card: #fff; --text: #1b5e20; --accent: #388e3c; --border: #a5d6a7; --hand: #1b5e20; --num-color: #2e7d32; 
-            --face-bg: conic-gradient(from 180deg at 50% 50%, #dcedc8 0deg, #c5e1a5 360deg);
-            --face-border: 3px solid #33691e;
-            --face-shadow: inset 0 2px 4px rgba(0,0,0,0.1);
-            --center-dot: #558b2f;
-        }
-
-        /* 9. Sunset (Warm Gradient) */
-        body.t-sunset { 
-            --bg: #fff3e0; --card: #fff; --text: #bf360c; --accent: #e64a19; --border: #ffab91; --hand: #bf360c; --num-color: #d84315; 
-            --face-bg: linear-gradient(to top, #ffccbc 0%, #ffe0b2 100%);
-            --face-border: 3px solid #e64a19;
-            --face-shadow: 0 5px 15px rgba(230, 74, 25, 0.15);
-            --center-dot: #bf360c;
-        }
-
-        /* 10. Slate (Professional Blue-Grey) */
-        body.t-slate { 
-            --bg: #2f3640; --card: #353b48; --text: #f5f6fa; --accent: #487eb0; --border: #718093; --hand: #f5f6fa; --num-color: #dcdde1; 
-            --face-bg: radial-gradient(circle, #353b48 60%, #2f3640 100%);
-            --face-border: 3px solid #718093;
-            --face-shadow: inset 0 0 5px rgba(0,0,0,0.5);
-            --center-dot: #487eb0;
-        }
-
-        body { font-family: 'Inter', system-ui, sans-serif; background-color: var(--bg); color: var(--text); margin: 0; display: flex; transition: background-color 0.3s ease, color 0.3s ease; height: 100vh; overflow: hidden; }
+        body.t-minimal { --bg: #fff; --card: #fff; --text: #000; --accent: #000; --border: #000; --hand: #000; --num-color: #000; --face-bg: #fff; --face-border: 4px solid #000; --face-shadow: none; --center-dot: #000; }
+        body.t-forest { --bg: #f1f8e9; --card: #fff; --text: #1b5e20; --accent: #388e3c; --border: #a5d6a7; --hand: #1b5e20; --num-color: #2e7d32; --face-bg: conic-gradient(from 180deg at 50% 50%, #dcedc8 0deg, #c5e1a5 360deg); --face-border: 3px solid #33691e; --face-shadow: inset 0 2px 4px rgba(0,0,0,0.1); --center-dot: #558b2f; }
+        body.t-slate { --bg: #2f3640; --card: #353b48; --text: #f5f6fa; --accent: #487eb0; --border: #718093; --hand: #f5f6fa; --num-color: #dcdde1; --face-bg: radial-gradient(circle, #353b48 60%, #2f3640 100%); --face-border: 3px solid #718093; --face-shadow: inset 0 0 5px rgba(0,0,0,0.5); --center-dot: #487eb0; }
         
-        .sidebar { width: 280px; background: rgba(0,0,0,0.05); height: 100vh; padding: 20px; box-sizing: border-box; display: flex; flex-direction: column; border-right: 1px solid var(--border); transition: border 0.3s; }
+        body.t-image { --bg: #222; --card: #333; --text: #fff; --accent: #fff; --border: #555; --hand: #fff; --num-color: transparent; --face-bg: #000; --face-border: none; --face-shadow: 0 10px 20px rgba(0,0,0,0.5); --center-dot: #fff; }
+        body.t-image .clock { background-size: cover; background-position: center; background-repeat: no-repeat; }
+
+        /* --- BASE STYLES --- */
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* iOS Font Optimization */
+            background-color: var(--bg); color: var(--text); margin: 0; 
+            display: flex; 
+            height: 100vh; 
+            /* 關鍵修改 2: 解決 Safari 下方工具列遮擋問題 */
+            height: 100dvh; 
+            overflow: hidden; 
+            transition: background 0.3s, color 0.3s;
+        }
+        
+        /* 桌面版側邊欄 */
+        .sidebar { 
+            width: 280px; 
+            background: rgba(0,0,0,0.05); 
+            height: 100%; 
+            padding: 20px; 
+            box-sizing: border-box; 
+            display: flex; 
+            flex-direction: column; 
+            border-right: 1px solid var(--border); 
+            overflow-y: auto;
+            flex-shrink: 0; /* 防止被壓縮 */
+            z-index: 10;
+        }
+        
         .sidebar-section { margin-bottom: 25px; }
         .sidebar h3 { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; opacity: 0.6; margin-bottom: 12px; }
 
-        #search-box { width: 100%; padding: 10px; border-radius: 6px; border: 1px solid var(--border); box-sizing: border-box; background: var(--card); color: var(--text); transition: all 0.3s; }
-        .search-results { max-height: 300px; overflow-y: auto; background: var(--card); border: 1px solid var(--border); border-radius: 6px; margin-top: 5px; display: none; }
-        .search-item { padding: 10px; cursor: pointer; border-bottom: 1px solid var(--border); font-size: 14px; }
-        .search-item:hover { background: var(--accent); color: white; }
+        #search-box { 
+            width: 100%; padding: 12px; border-radius: 8px; 
+            border: 1px solid var(--border); box-sizing: border-box; 
+            background: var(--card); color: var(--text); 
+            font-size: 16px; /* 防止 iOS 輸入時自動放大 */
+        }
+        .search-results { max-height: 200px; overflow-y: auto; background: var(--card); border: 1px solid var(--border); border-radius: 6px; margin-top: 5px; display: none; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .search-item { padding: 12px; cursor: pointer; border-bottom: 1px solid var(--border); font-size: 14px; }
 
-        .theme-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5px; }
-        .t-btn { padding: 8px; border: 1px solid var(--border); border-radius: 4px; cursor: pointer; font-size: 10px; font-weight: bold; background: var(--card); color: var(--text); }
-        .t-btn:hover { border-color: var(--accent); opacity: 0.8; }
+        .theme-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .t-btn { padding: 10px; border: 1px solid var(--border); border-radius: 8px; cursor: pointer; font-size: 11px; font-weight: bold; background: var(--card); color: var(--text); }
         
-        .main-content { flex-grow: 1; padding: 40px; overflow-y: auto; }
-        .clock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        .main-content { 
+            flex-grow: 1; 
+            padding: 40px; 
+            overflow-y: auto; 
+            -webkit-overflow-scrolling: touch; /* iOS 慣性滾動 */
+        }
         
-        .card { background: var(--card); border-radius: 20px; padding: 25px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; transition: background 0.3s, border 0.3s; }
-        .rm-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #ff4757; cursor: pointer; font-size: 20px; font-weight: bold; }
+        .clock-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 25px; }
+        
+        .card { background: var(--card); border-radius: 24px; padding: 25px; text-align: center; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid var(--border); position: relative; }
+        .rm-btn { position: absolute; top: 15px; right: 15px; background: none; border: none; color: #ff4757; cursor: pointer; font-size: 24px; font-weight: bold; padding: 10px; /* 加大觸控範圍 */ }
 
-        /* CLOCK FACE UPGRADE */
         .clock { 
-            width: 150px; 
-            height: 150px; 
-            border-radius: 50%; 
-            margin: 0 auto 15px; 
-            position: relative; 
-            
-            /* Apply new graphical vars */
-            background: var(--face-bg);
-            border: var(--face-border);
-            box-shadow: var(--face-shadow);
-            transition: all 0.3s ease;
+            width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 15px; position: relative; 
+            background: var(--face-bg); border: var(--face-border); box-shadow: var(--face-shadow); transition: all 0.3s;
         }
+        .clock::after { content: ''; position: absolute; top: 50%; left: 50%; width: 10px; height: 10px; background: var(--center-dot); border-radius: 50%; transform: translate(-50%, -50%); z-index: 4; }
 
-        /* Center dot for realism */
-        .clock::after {
-            content: '';
-            position: absolute;
-            top: 50%; left: 50%;
-            width: 10px; height: 10px;
-            background: var(--center-dot);
-            border-radius: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 4;
-        }
-
-        .hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; background: var(--hand); border-radius: 4px; transform: translateX(-50%); transition: background 0.3s; }
+        .hand { position: absolute; bottom: 50%; left: 50%; transform-origin: bottom; background: var(--hand); border-radius: 4px; transform: translateX(-50%); }
         .h-h { width: 5px; height: 40px; z-index: 3; }
         .m-h { width: 3px; height: 55px; z-index: 2; }
         .s-h { width: 1.5px; height: 60px; background: #ff4757; z-index: 1; }
         
-        .clk-num { 
-            position: absolute; 
-            font-size: 18px; 
-            font-weight: bold; 
-            color: var(--num-color);
-            width: 20px; 
-            height: 20px; 
-            line-height: 20px; 
-            text-align: center;
-            transition: color 0.3s;
-        }
+        .clk-num { position: absolute; font-size: 18px; font-weight: bold; color: var(--num-color); width: 20px; height: 20px; line-height: 20px; text-align: center; }
         .n-12 { top: 8px; left: 50%; transform: translateX(-50%); }
         .n-6  { bottom: 8px; left: 50%; transform: translateX(-50%); }
         .n-3  { right: 8px; top: 50%; transform: translateY(-50%); }
@@ -192,19 +115,59 @@
         .digital { font-size: 1.6rem; font-weight: bold; font-family: 'Courier New', monospace; margin: 10px 0 5px; }
         .date { font-size: 0.9rem; opacity: 0.7; font-weight: 500; }
         .city { font-weight: bold; font-size: 1.2rem; margin-bottom: 5px; }
+
+        /* --- 關鍵修改 3: MOBILE RESPONSIVE (手機適配) --- */
+        @media (max-width: 800px) {
+            body { 
+                flex-direction: column; /* 改為上下排列 */
+            }
+            
+            .sidebar { 
+                width: 100%; 
+                height: auto; 
+                max-height: 25vh; /* 限制側邊欄高度，讓時鐘露出 */
+                border-right: none; 
+                border-bottom: 1px solid var(--border);
+                padding: 15px;
+                flex-shrink: 0;
+            }
+
+            .main-content {
+                padding: 20px;
+                height: 75vh;
+            }
+
+            .clock-grid {
+                grid-template-columns: 1fr; /* 手機上變為單欄 */
+            }
+            
+            .theme-grid {
+                grid-template-columns: repeat(5, 1fr); /* 按鈕排成一排更省空間 */
+            }
+            
+            .t-btn {
+                padding: 5px; 
+                font-size: 9px;
+                white-space: nowrap; 
+                overflow: hidden;
+            }
+        }
     </style>
 </head>
 <body id="b">
 
     <div class="sidebar">
         <div class="sidebar-section">
-            <h3>🌍 Global Search</h3>
-            <input type="text" id="search-box" placeholder="Search (e.g. Jordan, UK)..." onkeyup="search()">
+            <h3 style="display:flex; justify-content:space-between; align-items:center;">
+                🌍 Add City 
+                <span style="font-size:10px; opacity:0.5;">v3.4 Mobile</span>
+            </h3>
+            <input type="text" id="search-box" placeholder="Tap to search country..." onkeyup="search()">
             <div id="results" class="search-results"></div>
         </div>
 
         <div class="sidebar-section">
-            <h3>🎨 Clock Face Style</h3>
+            <h3>🎨 Style & Graphics</h3>
             <div class="theme-grid">
                 <button class="t-btn" onclick="st('')">Classic</button>
                 <button class="t-btn" onclick="st('t-dark')">Dark</button>
@@ -215,10 +178,9 @@
                 <button class="t-btn" onclick="st('t-cyber')">Cyber</button>
                 <button class="t-btn" onclick="st('t-minimal')">Minimal</button>
                 <button class="t-btn" onclick="st('t-forest')">Forest</button>
-                <button class="t-btn" onclick="st('t-slate')">Slate</button>
+                <button class="t-btn" onclick="setCustomImage()">+ Image</button>
             </div>
         </div>
-        <p style="font-size: 10px; opacity: 0.5; margin-top: auto;">World Clock Pro v3.2<br>Auto-Save Enabled</p>
     </div>
 
     <div class="main-content">
@@ -242,72 +204,27 @@
 
     <script>
         const countryDB = [
-            {n: "Afghanistan", z: "Asia/Kabul"}, 
-            {n: "Australia (Sydney)", z: "Australia/Sydney"}, 
-            {n: "Australia (Adelaide)", z: "Australia/Adelaide"}, 
-            {n: "Australia (Perth)", z: "Australia/Perth"}, 
-            {n: "Austria", z: "Europe/Vienna"}, 
-            {n: "Bangladesh", z: "Asia/Dhaka"}, 
-            {n: "Belgium", z: "Europe/Brussels"}, 
-            {n: "Brazil", z: "America/Sao_Paulo"}, 
-            {n: "Canada (Toronto)", z: "America/Toronto"}, 
-            {n: "Canada (Vancouver)", z: "America/Vancouver"}, 
-            {n: "China", z: "Asia/Shanghai"}, 
-            {n: "Denmark", z: "Europe/Copenhagen"}, 
-            {n: "Egypt", z: "Africa/Cairo"}, 
-            {n: "France", z: "Europe/Paris"}, 
-            {n: "Germany", z: "Europe/Berlin"}, 
-            {n: "Greece", z: "Europe/Athens"}, 
-            {n: "Hong Kong", z: "Asia/Hong_Kong"}, 
-            {n: "India", z: "Asia/Kolkata"}, 
-            {n: "Indonesia", z: "Asia/Jakarta"}, 
-            {n: "Iran", z: "Asia/Tehran"}, 
-            {n: "Israel", z: "Asia/Jerusalem"}, 
-            {n: "Italy", z: "Europe/Rome"}, 
-            {n: "Japan", z: "Asia/Tokyo"},
-            {n: "Jordan", z: "Asia/Amman"},
-            {n: "Korea (South)", z: "Asia/Seoul"}, 
-            {n: "Malaysia", z: "Asia/Kuala_Lumpur"}, 
-            {n: "Mexico", z: "America/Mexico_City"}, 
-            {n: "Nepal", z: "Asia/Kathmandu"}, 
-            {n: "Netherlands", z: "Europe/Amsterdam"}, 
-            {n: "New Zealand", z: "Pacific/Auckland"}, 
-            {n: "Nigeria", z: "Africa/Lagos"}, 
-            {n: "Norway", z: "Europe/Oslo"}, 
-            {n: "Pakistan", z: "Asia/Karachi"}, 
-            {n: "Philippines", z: "Asia/Manila"}, 
-            {n: "Portugal", z: "Europe/Lisbon"}, 
-            {n: "Russia (Moscow)", z: "Europe/Moscow"}, 
-            {n: "Singapore", z: "Asia/Singapore"}, 
-            {n: "South Africa", z: "Africa/Johannesburg"}, 
-            {n: "Spain", z: "Europe/Madrid"}, 
-            {n: "Switzerland", z: "Europe/Zurich"}, 
-            {n: "Taiwan", z: "Asia/Taipei"}, 
-            {n: "Thailand", z: "Asia/Bangkok"}, 
-            {n: "Turkey", z: "Europe/Istanbul"}, 
-            {n: "UAE (Dubai)", z: "Asia/Dubai"}, 
-            {n: "UK (London)", z: "Europe/London"}, 
-            {n: "USA (New York)", z: "America/New_York"}, 
-            {n: "USA (Chicago)", z: "America/Chicago"}, 
-            {n: "USA (Los Angeles)", z: "America/Los_Angeles"}, 
-            {n: "Vietnam", z: "Asia/Ho_Chi_Minh"}
+            {n: "Afghanistan", z: "Asia/Kabul"}, {n: "Australia (Sydney)", z: "Australia/Sydney"}, {n: "Australia (Adelaide)", z: "Australia/Adelaide"}, {n: "Australia (Perth)", z: "Australia/Perth"}, {n: "Austria", z: "Europe/Vienna"}, {n: "Bangladesh", z: "Asia/Dhaka"}, {n: "Belgium", z: "Europe/Brussels"}, {n: "Brazil", z: "America/Sao_Paulo"}, {n: "Canada (Toronto)", z: "America/Toronto"}, {n: "Canada (Vancouver)", z: "America/Vancouver"}, {n: "China", z: "Asia/Shanghai"}, {n: "Denmark", z: "Europe/Copenhagen"}, {n: "Egypt", z: "Africa/Cairo"}, {n: "France", z: "Europe/Paris"}, {n: "Germany", z: "Europe/Berlin"}, {n: "Greece", z: "Europe/Athens"}, {n: "Hong Kong", z: "Asia/Hong_Kong"}, {n: "India", z: "Asia/Kolkata"}, {n: "Indonesia", z: "Asia/Jakarta"}, {n: "Iran", z: "Asia/Tehran"}, {n: "Israel", z: "Asia/Jerusalem"}, {n: "Italy", z: "Europe/Rome"}, {n: "Japan", z: "Asia/Tokyo"}, {n: "Jordan", z: "Asia/Amman"}, {n: "Korea (South)", z: "Asia/Seoul"}, {n: "Malaysia", z: "Asia/Kuala_Lumpur"}, {n: "Mexico", z: "America/Mexico_City"}, {n: "Nepal", z: "Asia/Kathmandu"}, {n: "Netherlands", z: "Europe/Amsterdam"}, {n: "New Zealand", z: "Pacific/Auckland"}, {n: "Nigeria", z: "Africa/Lagos"}, {n: "Norway", z: "Europe/Oslo"}, {n: "Pakistan", z: "Asia/Karachi"}, {n: "Philippines", z: "Asia/Manila"}, {n: "Portugal", z: "Europe/Lisbon"}, {n: "Russia (Moscow)", z: "Europe/Moscow"}, {n: "Singapore", z: "Asia/Singapore"}, {n: "South Africa", z: "Africa/Johannesburg"}, {n: "Spain", z: "Europe/Madrid"}, {n: "Switzerland", z: "Europe/Zurich"}, {n: "Taiwan", z: "Asia/Taipei"}, {n: "Thailand", z: "Asia/Bangkok"}, {n: "Turkey", z: "Europe/Istanbul"}, {n: "UAE (Dubai)", z: "Asia/Dubai"}, {n: "UK (London)", z: "Europe/London"}, {n: "USA (New York)", z: "America/New_York"}, {n: "USA (Chicago)", z: "America/Chicago"}, {n: "USA (Los Angeles)", z: "America/Los_Angeles"}, {n: "Vietnam", z: "Asia/Ho_Chi_Minh"}
         ];
 
         let clocks = [];
+        let customImgUrl = '';
 
-        // Save Function
         function saveSettings() {
-            const data = {
-                theme: document.getElementById('b').className,
-                list: clocks.map(c => ({n: c.name, z: c.zone}))
-            };
+            const data = { theme: document.getElementById('b').className, list: clocks.map(c => ({n: c.name, z: c.zone})), img: customImgUrl };
             localStorage.setItem('wcpro_data', JSON.stringify(data));
         }
 
-        // Updated Theme Switcher
         const st = (t) => {
             document.getElementById('b').className = t;
+            if(t !== 't-image') { document.documentElement.style.removeProperty('--face-bg'); } 
+            else if(customImgUrl) { document.documentElement.style.setProperty('--face-bg', `url('${customImgUrl}')`); }
             saveSettings();
+        }
+
+        function setCustomImage() {
+            const url = prompt("Paste your Image URL here:", customImgUrl);
+            if(url) { customImgUrl = url; document.getElementById('b').className = 't-image'; document.documentElement.style.setProperty('--face-bg', `url('${url}')`); saveSettings(); }
         }
 
         function search() {
@@ -319,55 +236,27 @@
             resDiv.style.display = filtered.length ? 'block' : 'none';
         }
 
-        // Updated Add function with Save
         function add(name, zone, skipSave = false) {
-            // Check duplicates
             if(clocks.some(c => c.name === name)) {
                 if(!skipSave) alert("Clock already exists!"); 
-                document.getElementById('search-box').value = '';
-                document.getElementById('results').style.display = 'none';
-                return;
+                document.getElementById('search-box').value = ''; document.getElementById('results').style.display = 'none'; return;
             }
-            if(clocks.length >= 23) return alert("Maximum 24 clocks reached.");
+            if(clocks.length >= 23) return alert("Max reached.");
             
             const id = 'c' + Date.now() + Math.random().toString(16).slice(2);
-            
             const div = document.createElement('div');
-            div.className = 'card';
-            div.id = `card-${id}`;
-            div.innerHTML = `<button class="rm-btn" onclick="rm('${id}')">×</button>
-                <div class="city">${name}</div>
-                <div class="clock">
-                    <div class="clk-num n-12">12</div>
-                    <div class="clk-num n-3">3</div>
-                    <div class="clk-num n-6">6</div>
-                    <div class="clk-num n-9">9</div>
-                    <div class="hand h-h" id="h-${id}"></div><div class="hand m-h" id="m-${id}"></div><div class="hand s-h" id="s-${id}"></div>
-                </div>
-                <div class="digital" id="d-${id}">Loading...</div>
-                <div class="date" id="dt-${id}">--</div>`;
-            
+            div.className = 'card'; div.id = `card-${id}`;
+            div.innerHTML = `<button class="rm-btn" onclick="rm('${id}')">×</button><div class="city">${name}</div>
+                <div class="clock"><div class="clk-num n-12">12</div><div class="clk-num n-3">3</div><div class="clk-num n-6">6</div><div class="clk-num n-9">9</div>
+                <div class="hand h-h" id="h-${id}"></div><div class="hand m-h" id="m-${id}"></div><div class="hand s-h" id="s-${id}"></div></div>
+                <div class="digital" id="d-${id}">...</div><div class="date" id="dt-${id}">--</div>`;
             document.getElementById('grid').appendChild(div);
             
-            clocks.push({
-                id, zone, name,
-                dom: {
-                    h: document.getElementById(`h-${id}`),
-                    m: document.getElementById(`m-${id}`),
-                    s: document.getElementById(`s-${id}`),
-                    d: document.getElementById(`d-${id}`),
-                    dt: document.getElementById(`dt-${id}`)
-                }
-            });
-            
-            document.getElementById('search-box').value = '';
-            document.getElementById('results').style.display = 'none';
-            tick(); 
-            
-            if(!skipSave) saveSettings();
+            clocks.push({ id, zone, name, dom: { h: document.getElementById(`h-${id}`), m: document.getElementById(`m-${id}`), s: document.getElementById(`s-${id}`), d: document.getElementById(`d-${id}`), dt: document.getElementById(`dt-${id}`) } });
+            document.getElementById('search-box').value = ''; document.getElementById('results').style.display = 'none';
+            tick(); if(!skipSave) saveSettings();
         }
 
-        // Updated Remove function with Save
         function rm(id) {
             clocks = clocks.filter(c => c.id !== id);
             const card = document.getElementById(`card-${id}`);
@@ -377,30 +266,15 @@
 
         function tick() {
             const now = new Date();
-            
-            // Update Local Time
             rotate('l', now);
             document.getElementById('ld').innerText = now.toLocaleTimeString('en-US', {hour12: true});
             document.getElementById('ldt').innerText = now.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
             
-            // Update World Clocks
             clocks.forEach(c => {
                 const t = new Date(now.toLocaleString('en-US', {timeZone: c.zone}));
-                
                 c.dom.d.innerText = t.toLocaleTimeString('en-US', {hour12: true});
                 c.dom.dt.innerText = t.toLocaleDateString('en-US', {weekday:'short', month:'short', day:'numeric'});
-
-                const h = t.getHours();
-                const m = t.getMinutes();
-                const s = t.getSeconds();
-
-                const hDeg = (h % 12) * 30 + m * 0.5;
-                const mDeg = m * 6;
-                const sDeg = s * 6;
-
-                c.dom.h.style.transform = `translateX(-50%) rotate(${hDeg}deg)`;
-                c.dom.m.style.transform = `translateX(-50%) rotate(${mDeg}deg)`;
-                c.dom.s.style.transform = `translateX(-50%) rotate(${sDeg}deg)`;
+                rotateOther(c.dom, t);
             });
         }
 
@@ -411,29 +285,27 @@
             if(el('m')) el('m').style.transform = `translateX(-50%) rotate(${m*6}deg)`;
             if(el('s')) el('s').style.transform = `translateX(-50%) rotate(${s*6}deg)`;
         }
+        
+        function rotateOther(dom, date) {
+            const h = date.getHours(), m = date.getMinutes(), s = date.getSeconds();
+            dom.h.style.transform = `translateX(-50%) rotate(${(h%12)*30 + m*0.5}deg)`;
+            dom.m.style.transform = `translateX(-50%) rotate(${m*6}deg)`;
+            dom.s.style.transform = `translateX(-50%) rotate(${s*6}deg)`;
+        }
 
-        // Load Settings on Start
         function loadSettings() {
             const saved = localStorage.getItem('wcpro_data');
             if (saved) {
                 try {
                     const data = JSON.parse(saved);
-                    // Load Theme
+                    if(data.img) { customImgUrl = data.img; if(data.theme === 't-image') document.documentElement.style.setProperty('--face-bg', `url('${data.img}')`); }
                     if(data.theme) document.getElementById('b').className = data.theme;
-                    // Load Clocks
-                    if(data.list && Array.isArray(data.list)) {
-                        data.list.forEach(c => add(c.n, c.z, true)); // true = skip duplicate save
-                    }
-                } catch(e) {
-                    console.error("Error loading settings", e);
-                }
+                    if(data.list && Array.isArray(data.list)) { data.list.forEach(c => add(c.n, c.z, true)); }
+                } catch(e) {}
             }
         }
 
-        // Init
-        loadSettings();
-        setInterval(tick, 1000);
-        tick();
+        loadSettings(); setInterval(tick, 1000); tick();
     </script>
 </body>
 </html>
